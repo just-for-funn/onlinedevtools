@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    width: 100vw;
+    min-width: 100vh;
+    height: 100vh;
+}
+
+.editor-container{
+    flex-grow: 1;
+    align-self: stretch;
+    background-color: blueviolet;
+}
+
+.result-container{
+    background-color: cadetblue;
+    flex-grow: 1;
+    align-self: stretch;
+}
