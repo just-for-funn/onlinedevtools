@@ -8,7 +8,12 @@ import { interval, Observable } from 'rxjs';
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent implements OnInit {
-  editorOptions = {theme: 'vs-dark', language: 'yaml'};
+  editorOptions = {
+    theme: 'vs-dark', 
+    language: 'yaml',
+    formatOnType: true,
+    formatOnPaste: true
+  };
   code:string =  '';
   constructor() { }
 
