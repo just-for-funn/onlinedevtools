@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { interval, Observable, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { CodeService } from '../services/code.service';
 
 @Component({
   selector: 'app-property',
@@ -19,14 +20,23 @@ export class PropertyComponent implements OnInit {
   private _code:string = '';
   codeSubject: Subject<string> = new Subject<string>(); 
 
-  constructor() { }
+  constructor(private codeService: CodeService) { }
 
   ngOnInit(): void {
       this.codeSubject
         .pipe(debounceTime(500))
-        .subscribe(o=> console.log("from subject" ,o ));
+        .subscribe(o=> {
+          this.notify(o);
+        });
   }
 
+
+  private notify(o: string) {
+    this.codeService.onCodeChanged({
+      code: o,
+      language: "yaml"
+    });
+  }
 
    get code(){
      return this._code;

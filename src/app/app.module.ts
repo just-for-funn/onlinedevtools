@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { PropertyComponent } from './property/property.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
+import { EnvconverterComponent } from './envconverter/envconverter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PropertyComponent
+    PropertyComponent,
+    EnvconverterComponent
   ],
   imports: [
     BrowserModule,
