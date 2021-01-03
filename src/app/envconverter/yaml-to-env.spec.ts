@@ -72,5 +72,15 @@ describe('YamlToEnv', () => {
       .toContain("APERSON_JOBTITLE");
   });
 
+  it('should parse arrays',()=>{
+    let arg = `
+name: test
+---
+name: test
+surname: surname`;
+    let values = YamlToEnv.convertToEnvList(arg);
+    expect(values).toContain("NAME");
+    expect(values).toContain("SURNAME");
+  })
 
 });

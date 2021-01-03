@@ -1,10 +1,19 @@
-import {parse} from 'yaml'
+import { __spreadArrays } from 'tslib';
+import {parse, parseAllDocuments} from 'yaml'
 export class YamlToEnv {
     static convertToEnvList(value: string): string[]{
-        let parsed = parse(value);
+        let jsons = parseAllDocuments(value)
+            .map(o=>o.toJSON());
+        let uniqueValues = jsons.map(o=> this.parseObject(o))
+            .reduce((a,b)=> a.concat(b) , [])
+            .reduce((a,b)=> a.add(b), new Set<string>());
+         return Array.from(uniqueValues);   
+    }
+
+    private static parseObject(parsed: any): string[] {
         return Object.keys(parsed)
-            .map(o=> this.getPath(o , parsed))
-            .reduce((a,b)=>a.concat(b),[]);
+            .map(o => this.getPath(o, parsed))
+            .reduce((a, b) => a.concat(b), []);
     }
 
     static getPath(o: string, obj: any): string[] {
