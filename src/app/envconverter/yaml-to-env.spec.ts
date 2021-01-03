@@ -62,5 +62,15 @@ describe('YamlToEnv', () => {
      expect(values).toContain("PERSON_JOB_AGE");
   });
 
+  it('should parse dash' , ()=>{
+    let arg = `
+    a-person:
+      job-title: 'dev'
+  `;
+   let values = YamlToEnv.convertToEnvList(arg);
+   expect(values)
+      .toContain("APERSON_JOBTITLE");
+  });
+
 
 });

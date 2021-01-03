@@ -14,7 +14,7 @@ export class YamlToEnv {
                 .map(k=> this.getPath(k , obj[o]))
                 .reduce((a,b)=>a.concat(b),[])
                 .map(i=> o+"_"+i)
-                .map(i=> i.toUpperCase());
+                .map(i=> YamlToEnv.normalize(i));
 
         }else{
             return [YamlToEnv.normalize(o)];
@@ -22,6 +22,10 @@ export class YamlToEnv {
     }
 
     private static normalize(name: string): string {
-        return name.toUpperCase().split('.').join('_');
+        return name.toUpperCase()
+            .split('.')
+            .join('_')
+            .split('-')
+            .join("");
     }
 }
