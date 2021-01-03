@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class EnvconverterComponent implements OnInit {
 
   
-  private keys: string[] = [];
+  keys: string[] = [];
 
   constructor(private condeService: CodeService) {
 
