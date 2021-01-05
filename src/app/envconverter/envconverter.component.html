@@ -1,3 +1,7 @@
 <div *ngFor="let key of keys">
     <span>{{key}}</span>
 </div>
+
+<app-envelement *ngFor="let key of keys" [env]="key">
+
+</app-envelement>

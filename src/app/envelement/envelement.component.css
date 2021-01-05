@@ -1,0 +1,16 @@
+.container{
+    margin-bottom: 0.25em;
+    display: flex;
+    background-color: chocolate;
+}
+
+.text {
+    flex-grow: 1;
+    background-color: cyan;
+    height: 2em;
+}
+
+.icon{
+    width: 2em;
+    height: 2em;
+}
