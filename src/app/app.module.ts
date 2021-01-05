@@ -8,7 +8,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
 import { EnvconverterComponent } from './envconverter/envconverter.component';
 import { EnvelementComponent } from './envelement/envelement.component';
-
+import {ButtonModule} from 'primeng/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { EnvelementComponent } from './envelement/envelement.component';
     BrowserModule,
     AppRoutingModule,
     MonacoEditorModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
