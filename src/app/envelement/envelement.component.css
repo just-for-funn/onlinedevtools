@@ -6,6 +6,9 @@
 .text {
     flex-grow: 1;
     height: 2em;
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
 }
 
 .icon{
