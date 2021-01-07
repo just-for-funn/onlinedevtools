@@ -1,3 +1,4 @@
-<app-envelement *ngFor="let key of keys" [env]="key">
+<p-toast position="top-right" key="msg" life="3000"></p-toast>
+<app-envelement *ngFor="let key of keys" [env]="key" (onSelected)="onItemSelected($event)">
 
 </app-envelement>

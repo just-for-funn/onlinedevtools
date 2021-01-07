@@ -4,6 +4,8 @@ import {parse} from 'yaml'
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { YamlToEnv } from './yaml-to-env';
 import { Observable, of } from 'rxjs';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-envconverter',
   templateUrl: './envconverter.component.html',
@@ -14,7 +16,7 @@ export class EnvconverterComponent implements OnInit {
   
   keys: string[] = [];
 
-  constructor(private condeService: CodeService) {
+  constructor(private condeService: CodeService,private messageService: MessageService) {
 
    }
 
@@ -46,6 +48,9 @@ export class EnvconverterComponent implements OnInit {
       let parsed = parse(o.code);
       console.log("parsed",parsed);
   }
-    
+  
+  onItemSelected(arg: string){
+    this.messageService.add({key:"msg", severity:'info', summary:'copied', detail:arg});
+  }
 
 }

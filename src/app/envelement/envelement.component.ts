@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {ButtonModule} from 'primeng/button';
 
 @Component({
@@ -8,12 +8,22 @@ import {ButtonModule} from 'primeng/button';
 })
 export class EnvelementComponent implements OnInit {
 
+  @Output()
+  onSelected  = new EventEmitter<string>(); 
+
   @Input()
   env: string = "";
 
   constructor() { }
 
+  
+
   ngOnInit(): void {
+  }
+
+  fireSelected(){
+    console.log("clicked");
+    this.onSelected.emit(this.env);
   }
 
 }

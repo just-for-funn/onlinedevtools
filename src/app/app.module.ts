@@ -9,6 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { EnvconverterComponent } from './envconverter/envconverter.component';
 import { EnvelementComponent } from './envelement/envelement.component';
 import {ButtonModule} from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +27,11 @@ import {ButtonModule} from 'primeng/button';
     AppRoutingModule,
     MonacoEditorModule.forRoot(),
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
