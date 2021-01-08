@@ -50,7 +50,14 @@ export class EnvconverterComponent implements OnInit {
   }
   
   onItemSelected(arg: string){
-    this.messageService.add({key:"msg", severity:'info', summary:'copied', detail:arg});
+    navigator.clipboard.writeText(arg)
+    .then(()=>{
+      this.messageService.add({key:"msg", severity:'info', summary:'copied', detail:arg});
+    }).catch(error=>{
+      console.error("clip copy failed",error);
+      this.messageService.add({key:"msg", severity:'error', summary:'error', detail:"browser does not support copy command"});
+    });
+    
   }
 
 }
