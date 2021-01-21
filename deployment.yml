@@ -67,7 +67,6 @@ spec:
               serviceName: devtools
               servicePort: 80
 ---
----
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
