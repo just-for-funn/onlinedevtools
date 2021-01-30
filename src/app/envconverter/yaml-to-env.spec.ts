@@ -89,4 +89,13 @@ surname: surname`;
     expect(values).toContain("TEST");
   });
 
+  it('should not convert non yaml valuees',()=>{
+    let nonYaml = `
+      test
+      test
+      test
+    `;
+    let values = YamlToEnv.convertToEnvList(nonYaml);
+    expect(values.length).toEqual(0);
+  });
 });

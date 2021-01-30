@@ -2,6 +2,9 @@ import { __spreadArrays } from 'tslib';
 import {parse, parseAllDocuments} from 'yaml'
 export class YamlToEnv {
     static convertToEnvList(value: string): string[]{
+        if(!value.includes(':')){
+            return [];
+        }
         let jsons = parseAllDocuments(value)
             .map(o=>o.toJSON());
         let uniqueValues = jsons.map(o=> this.parseObject(o))
