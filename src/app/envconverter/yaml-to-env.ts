@@ -17,7 +17,7 @@ export class YamlToEnv {
     }
 
     static getPath(o: string, obj: any): string[] {
-        if(typeof obj[o] === 'object' && !Array.isArray(obj[o]))
+        if(typeof obj[o] === 'object' && !Array.isArray(obj[o]) && obj[o] != undefined && obj[o] != null)
         {
             return Object.keys(obj[o])
                 .map(k=> this.getPath(k , obj[o]))

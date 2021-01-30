@@ -35,7 +35,7 @@ export class EnvconverterComponent implements OnInit {
           .pipe(
               map(o=> YamlToEnv.convertToEnvList(o.code)),
               catchError(err=>{
-                console.error('parsing failed');
+                console.error('parsing failed',err);
                 return [];
               })
           );

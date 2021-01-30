@@ -81,6 +81,12 @@ surname: surname`;
     let values = YamlToEnv.convertToEnvList(arg);
     expect(values).toContain("NAME");
     expect(values).toContain("SURNAME");
-  })
+  });
+
+  it('should convert with null value' , ()=>{
+    let arg = "test: ";
+    let values = YamlToEnv.convertToEnvList(arg);
+    expect(values).toContain("TEST");
+  });
 
 });
