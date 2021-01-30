@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { interval, Observable, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CodeService } from '../services/code.service';
 
+
+
+const SAMPLE:string = `
+logging:
+  file:
+    name: myapplication.log
+---
+spring:
+  config:
+    activate:
+      on-profile: staging
+  datasource:
+    password: 'password'
+    url: jdbc:h2:staging
+    username: SA
+some:
+  property: stagingValue
+`;
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.css']
 })
-export class PropertyComponent implements OnInit {
+export class PropertyComponent implements OnInit{
   editorOptions = {
     theme: 'vs-dark', 
     language: 'yaml',
@@ -22,12 +40,25 @@ export class PropertyComponent implements OnInit {
 
   constructor(private codeService: CodeService) { }
 
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
   ngOnInit(): void {
       this.codeSubject
         .pipe(debounceTime(500))
         .subscribe(o=> {
           this.notify(o);
         });
+
+        setTimeout(()=>{
+          this.addSampleData();
+        },1000);
+  }
+  addSampleData() {
+    if(this.code === ''){
+      this.code = SAMPLE;
+    }
   }
 
 
