@@ -1,9 +1,9 @@
-docker rmi -f $(docker images | grep devtools | awk '{split($0,a); print a[3];}';)
+docker rmi -f $(docker images | grep environmentconverter | awk '{split($0,a); print a[3];}';)
 rm -rf dist
 npm run-script build
-docker build . --no-cache -t devtools
+docker build . --no-cache -t environmentconverter
 
-docker tag devtools registry.digitalocean.com/dwt-development/devtools
-docker push registry.digitalocean.com/dwt-development/devtools
+docker tag environmentconverter davutozcan/environmentconverter:1
+docker push davutozcan/environmentconverter:1
 
-docker run -it -p 88:80 devtools
+#docker run -it -p 88:80 environmentconverter
