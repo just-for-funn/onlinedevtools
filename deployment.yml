@@ -18,7 +18,7 @@ spec:
         app: environmentconverter
     spec:
       containers:
-      - image: davutozcan/environmentconverter:1
+      - image: davutozcan/environmentconverter:2
         name: environmentconverter
         resources: {}
       imagePullSecrets:
